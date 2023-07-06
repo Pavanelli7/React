@@ -3,17 +3,12 @@ import Input from './Input'
 import Button from './Button'
 
 function Form() {
+
   return (
     <>
       <form action="">
-        <p>
-          <label htmlFor="nome">Nome</label>
-          <Input />
-        </p>
-        <p>
-          <label htmlFor="mail">E-mail</label>
-          <Input />
-        </p>
+          <Input id='email' label={'E-mail'} required/>
+          <Input id='senha' label={'Senha'}/>
         <Button />
       </form>
     </>
