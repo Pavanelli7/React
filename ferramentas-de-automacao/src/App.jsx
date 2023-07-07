@@ -1,26 +1,16 @@
 import React from "react";
-import Header from "./Header"
-import Footer from "./Footer";
-import Form from "./Form/Form";
-import Home from "./Home";
-import Produtos from "./Produtos";
+import ButtonModal from "./ButtonModal";
+import Modal from "./Modal";
 
 
 
 const App = () => {
-  let Pagina = Home;
-  const {pathname} = window.location;
-
-  if (pathname === '/produtos') {
-    Pagina = Produtos;
-  } else {
-    Pagina = Home
-  }
+  const [modal, setModal] = React.useState(false);
 
   return (
     <>
-      <Header />
-      <Pagina />
+      <Modal modal={modal} setModal={setModal} />
+      <ButtonModal setModal={setModal} />
     </>
   )
 };
