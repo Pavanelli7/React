@@ -2,26 +2,27 @@ import React from "react";
 import Produto from "./Produto";
 
 const App = () => {
-  const [dados, setDados] = React.useState(null)
-  const [carregando, setCarregando] = React.useState(null);
+  const [produto, setProduto] = React.useState(null);
 
-  async function handleClick(event) {
-    setCarregando(true);
-    const response = await fetch(`https://ranekapi.origamid.dev/json/api/produto/${event.target.innerText}`,
-    );
-    const json = await response.json();
-    console.log(response);
-    setDados(json);
-    setCarregando(false);
+  React.useEffect(() => {
+    const produtoLocal = window.localStorage.getItem('produto');
+
+    if (produtoLocal !== null) setProduto(produtoLocal);
+  }, []);
+
+  React.useEffect(() => {
+    if (produto !== null)window.localStorage.setItem('produto', produto);
+  }, [produto]);    //sempre que produto for modificado o evento acontece
+
+  function handleClick(event) {
+    setProduto(event.target.innerText);
   }
-
   return (
     <>
+      <h1>Preferência: {produto}</h1>
       <button onClick={handleClick}>notebook</button>
       <button onClick={handleClick}>smartphone</button>
-      <button onClick={handleClick}>tablet</button>
-      {carregando && <p>Carregando...</p>}
-      {!carregando && dados && <Produto dados={dados} />}
+      <Produto produto={produto} />
     </>
   )
 };

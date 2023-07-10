@@ -1,11 +1,19 @@
 import React from 'react'
 
-const Produto = ({ dados }) => {
+const Produto = ({ produto }) => {
+  const [dados, setDaqdos] = React.useState(null);
+
+  React.useEffect(() => {
+    if(produto !== null)fetch(`https://ranekapi.origamid.dev/json/api/produto/${produto}`)
+    .then(response => response.json())
+    .then(json => setDaqdos(json));
+  }, [produto]);
+
+  if(dados === null) return null;
   return (
     <>
       <h1>{dados.nome}</h1>
-      <p>R$ {dados.preco}</p>
-      <img src={dados.fotos[0].src} alt={dados.fotos[0].titulo[0]} />
+      <p>R$: {dados.preco}</p>
     </>
   )
 }
