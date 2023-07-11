@@ -1,17 +1,18 @@
 import React from "react";
-import Produto from "./Produto";
-import { GlobalStorage } from "./GlobalContext";
-import Limpar from "./Limpar";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 const App = () => {
+  const [produto, setProduto] = useLocalStorage('produto', '');
 
+  function handleClick({target}) {
+    setProduto(target.innerText);
+  }
 
   return (
     <>
-    <GlobalStorage>
-      <Produto />
-      <Limpar />
-    </GlobalStorage>
+      <p>Produto: {produto}</p>
+      <button onClick={handleClick}>notebook</button>
+      <button onClick={handleClick}>smartphone</button>
     </>
   )
 };
