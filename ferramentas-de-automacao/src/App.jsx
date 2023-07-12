@@ -1,57 +1,44 @@
 import React from "react";
 
+const coresArray = ['azul', 'roxo', 'laranja', 'verde', 'vermelho', 'cinza'];
+
 const App = () => {
-  const [produto, setProduto] = React.useState('');
-  const [cor, setCor] = React.useState('');
+  const [cores, setCores] = React.useState([]);
 
   function handleChange({ target }) {
-    setProduto(target.value);
+    const { checked, value } = target;
+    if (checked) {
+      setCores([...cores, target.value]);
+    } else {
+      setCores(cores.filter((cor) => cor !== value));
+    }
   }
-  return (
-    <>
-      <form>
-        <h2>Dispositivo</h2>
-        <label>
-          <input
-            type="radio"
-            value="notebook"
-            checked={produto === 'notebook'}
-            onChange={({ target }) => setProduto(target.value)}
-          />
-          Notebook
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="smartphone"
-            checked={produto === 'smartphone'}
-            onChange={({ target }) => setProduto(target.value)}
-          />
-          Smartphone
-        </label>
 
-        <h2>Cor</h2>
-        <label>
+  function handleChecked(cor) {
+    return cores.includes(cor);
+  }
+
+  return (
+    <form>
+      {coresArray.map((cor) => (
+        <label key={cor} style={{ textTransform: 'capitalize' }}>
           <input
-            type="radio"
-            value="azul"
-            checked={cor === 'azul'}
-            onChange={({ target }) => setCor(target.value)}
+            type="checkbox"
+            value={cor}
+            checked={handleChecked(cor)}
+            onChange={handleChange}
           />
-          Azul
+          {cor}
         </label>
-        <label>
-          <input
-            type="radio"
-            value="vermelho"
-            checked={cor === 'vermelho'}
-            onChange={({ target }) => setCor(target.value)}
-          />
-          Vermelho
-        </label>
-      </form>
-    </>
+      ))}
+      <ul>
+        {cores.map((cor) => (
+          <li key={cor}>{cor}</li>
+        ))}
+      </ul>
+    </form>
   );
 };
+
 
 export default App
