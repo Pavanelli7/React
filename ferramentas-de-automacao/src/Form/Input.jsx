@@ -1,18 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-function Input({ id, label, value, setValue, required }) {
+const Input = ({ id, label, onChange, ...props }) => {
   return (
     <>
       <label htmlFor={id}>{label}</label>
-      <input
-        id={id}
-        type="text"
-        value={value}
-        onChange={({ target }) => setValue(target.value)}
-        required={required}
-      />
+      <input id={id} name={id} onChange={onChange} {...props} />
     </>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;
