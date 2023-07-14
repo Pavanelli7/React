@@ -1,29 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ProdutosContainer = styled.div`
-  display: flex;
-`;
-
-const Produto = styled.div`
-  flex: 1;
-`;
-
-const Titulo = styled.h1`
-  font-size: 2em;
-`;
-
-const Comprar = styled.button`
-  font-size: 1.5em;
-  background: transparent;
-  padding: 0.5rem;
-  border-radius: 4px;
-  border: 2px solid;
-  cursor: pointer;
-`;
-
-const Preco = styled.span`
-  background: #53d956;
+const Preco = styled.p`
+  background: ${(props) => props.cor};
   color: white;
   display: inline-block;
   border-radius: 5px;
@@ -31,22 +10,20 @@ const Preco = styled.span`
 `;
 
 const App = () => {
+  function template(value, total) {
+    console.log(value);
+    console.log(total);
+  }
+  const total = 10;
+  template`São ${total} no total`;
+
   return (
-    <ProdutosContainer>
-      <Produto>
-        <Titulo>
-          Notebook <Preco>R$ 1999</Preco>
-        </Titulo>
-        <Comprar>Comprar</Comprar>
-      </Produto>
-      <Produto>
-        <Titulo>
-          Smartphone <Preco>R$ 2999</Preco>
-        </Titulo>
-        <Comprar>Comprar</Comprar>
-      </Produto>
-    </ProdutosContainer>
+    <div>
+      <Preco cor="#53d956">R$ 2999</Preco>
+      <Preco cor="#84e">R$ 1999</Preco>
+    </div>
   );
 };
+
 
 export default App;
