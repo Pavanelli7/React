@@ -1,28 +1,16 @@
 import React from 'react';
+import foto from './img/foto.jpg';
 import './App.css';
-import Produto from './Produto';
-import Slide from './Slide';
+import { ReactComponent } from './img/dog.svg';
 
 const App = () => {
-  const slides = [
-    {
-      id: 'slide1',
-      text: 'Slide 1'
-    },
-    {
-      id: 'slide2',
-      text: 'Slide 2'
-    },
-    {
-      id: 'slide3',
-      text: 'Slide 3'
-    }
-  ]
-
   return (
     <div>
-      <Slide slides={slides} />
+      <p className='fundo'></p>
+      <ReactComponent />
+      <img src={foto} alt="Cachorro" />
     </div>
   );
 };
+
 export default App;
