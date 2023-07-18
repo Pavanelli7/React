@@ -1,15 +1,17 @@
 import React from 'react';
-import foto from './img/foto.jpg';
-import './App.css';
-import { ReactComponent } from './img/dog.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import Sobre from './Sobre';
+
 
 const App = () => {
   return (
-    <div>
-      <p className='fundo'></p>
-      <ReactComponent />
-      <img src={foto} alt="Cachorro" />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='sobre' element={<Sobre />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

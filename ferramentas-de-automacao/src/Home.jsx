@@ -4,10 +4,8 @@ import Titulo from './Titulo'
 const Home = () => {
   return (
     <>
-      <section>
-        <Titulo texto = 'Home' />
-        <p>Essa é a home do site</p>
-      </section>
+      <h1>Home</h1>
+      <p>Essa é a home</p>
     </>
   )
 }
