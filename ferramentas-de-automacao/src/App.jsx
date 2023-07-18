@@ -1,18 +1,28 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
+import './App.css';
+import Produto from './Produto';
+import Slide from './Slide';
 
 const App = () => {
-  const [ativo, setAtivo] = React.useState(false);
+  const slides = [
+    {
+      id: 'slide1',
+      text: 'Slide 1'
+    },
+    {
+      id: 'slide2',
+      text: 'Slide 2'
+    },
+    {
+      id: 'slide3',
+      text: 'Slide 3'
+    }
+  ]
 
   return (
-    <Card bg="dark" text='white'>
-      <Card.Header>Notebook</Card.Header>
-      <Card.Body>
-        <Card.Title>R$ 2.500,00</Card.Title>
-        <Card.Text>Esse é um notebook com 1tb, 16gb ram e placa de vídeo de 16gb.</Card.Text>
-      </Card.Body>
-    </Card >
+    <div>
+      <Slide slides={slides} />
+    </div>
   );
 };
-
 export default App;

@@ -1,8 +1,12 @@
-.container {
-  height: 20px;
-  background: tomato;
+.animeLeft {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: animeLeft 0.3s forwards;
 }
 
-.title {
-  color: tomato;
+@keyframes animeLeft {
+  to {
+    opacity: 1;
+    transform: initial;
+  }
 }
