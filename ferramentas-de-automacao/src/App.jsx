@@ -1,23 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Button = styled.button`
-  background: ${({ ativo }) => (ativo ? '#53d956' : '#000')};
-  border: 1px solid black;
-  font-size: 1rem;
-  padding: 0.5rem;
-  border-radius: 4px;
-  color: white;
-  cursor: pointer;
-`;
+import Card from 'react-bootstrap/Card';
 
 const App = () => {
   const [ativo, setAtivo] = React.useState(false);
 
   return (
-    <Button ativo={ativo} onClick={() => setAtivo(!ativo)}>
-      Ativar
-    </Button>
+    <Card bg="dark" text='white'>
+      <Card.Header>Notebook</Card.Header>
+      <Card.Body>
+        <Card.Title>R$ 2.500,00</Card.Title>
+        <Card.Text>Esse é um notebook com 1tb, 16gb ram e placa de vídeo de 16gb.</Card.Text>
+      </Card.Body>
+    </Card >
   );
 };
 
