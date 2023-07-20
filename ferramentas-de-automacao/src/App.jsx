@@ -1,28 +1,27 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './Header';
-import Home from './Home';
-import Sobre from './Sobre';
-import Login from './Login';
-import Produto from './Produto';
-import ProdutoDescricao from './ProdutoDescricao';
-import ProdutoAvaliacao from './ProdutoAvaliacao';
-import ProdutoCustomizado from './ProdutoCustomizado';
+import React from "react";
+import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Produtos from "./Components/Produtos";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Contato from "./Components/Contato";
+import Produto from "./Components/Produto";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="sobre" element={<Sobre />} />
-        <Route path="login" element={<Login />} />
-        <Route path="produto/:id/*" element={<Produto />}>
-          <Route path='' element={<ProdutoDescricao />} />
-          <Route path='avaliacao' element={<ProdutoAvaliacao />} />
-          <Route path='customizado' element={<ProdutoCustomizado />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <Header />
+        <div className="content">
+          <Routes>
+            <Route path='/' element={<Produtos />} />
+            <Route path='produto/:id' element={<Produto />} />
+            <Route path='contato' element={<Contato />} />
+          </Routes>
+        </div>
+        <Footer />
+      </BrowserRouter>
+    </div>
   );
 };
 
