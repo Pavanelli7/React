@@ -1,12 +1,26 @@
 import React from "react";
-import Header from "./Components/Header";
+import Exemplo from "./Components/Exemplo";
+
+function reducer(state, action) {
+  switch (action) {
+    case 'aumentar':
+      return state + 1;
+    case 'reduzir':
+      return state - 1;
+    default:
+      throw new Error();
+  }
+}
 
 const App = () => {
-  const [contar, setContar] = React.useState(0);
+  const [state, dispatch] = React.useReducer(reducer, 0);
+
   return (
     <div>
-      <Header />
-      <button onClick={() => setContar(contar + 1)}>{contar}</button>
+      <button onClick={() => dispatch('aumentar')}>+</button>
+      <button onClick={() => dispatch('reduzir')}>-</button>
+      <p>{state}</p>
+      <Exemplo />
     </div>
   );
 };
